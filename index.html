@@ -1,1 +1,92 @@
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+public class AdminSystem {
+
+    // List to store users
+    private ArrayList<String> users = new ArrayList<>();
+
+    public void Admin() {
+        // Predefined admin credentials
+        final String ADMIN_USERNAME = "Admin";
+        final String ADMIN_PASSWORD = "0000";
+
+        // Prompt for username and password
+        String username = JOptionPane.showInputDialog("Enter Username:");
+        String password = JOptionPane.showInputDialog("Enter Password:");
+
+        // Validate credentials
+        if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
+            JOptionPane.showMessageDialog(null, "Login Successful!");
+            showMenu();
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid Username or Password!");
+        }
+    }
+
+    private void showMenu() {
+        while (true) {
+            // Display menu options
+            String menu = "1) Add User\n2) Delete User\n3) Display Users\n4) Exit";
+            String choice = JOptionPane.showInputDialog(menu);
+
+            switch (choice) {
+                case "1":
+                    addUser();
+                    break;
+                case "2":
+                    deleteUser();
+                    break;
+                case "3":
+                    displayUsers();
+                    break;
+                case "4":
+                    JOptionPane.showMessageDialog(null, "Exiting...");
+                    System.exit(0);
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid Choice! Try again.");
+            }
+        }
+    }
+
+    private void addUser() {
+        String newUser = JOptionPane.showInputDialog("Enter username to add:");
+        if (newUser != null && !newUser.isEmpty()) {
+            users.add(newUser);
+            JOptionPane.showMessageDialog(null, "User added successfully!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid input! User not added.");
+        }
+    }
+
+    private void deleteUser() {
+        String userToDelete = JOptionPane.showInputDialog("Enter username to delete:");
+        if (users.contains(userToDelete)) {
+            users.remove(userToDelete);
+            JOptionPane.showMessageDialog(null, "User deleted successfully!");
+        } else {
+            JOptionPane.showMessageDialog(null, "User not found!");
+        }
+    }
+
+    private void displayUsers() {
+        if (users.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No users to display.");
+        } else {
+            StringBuilder userList = new StringBuilder("Users:\n");
+            for (String user : users) {
+                userList.append(user).append("\n");
+            }
+            JOptionPane.showMessageDialog(null, userList.toString());
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create an instance of the AdminSystem class
+        AdminSystem adminSystem = new AdminSystem();
+        adminSystem.Admin(); // Call the Admin method
+    }
+}
+
+      
