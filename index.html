@@ -1,92 +1,658 @@
-
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-
-public class AdminSystem {
-
-    // List to store users
-    private ArrayList<String> users = new ArrayList<>();
-
-    public void Admin() {
-        // Predefined admin credentials
-        final String ADMIN_USERNAME = "Admin";
-        final String ADMIN_PASSWORD = "0000";
-
-        // Prompt for username and password
-        String username = JOptionPane.showInputDialog("Enter Username:");
-        String password = JOptionPane.showInputDialog("Enter Password:");
-
-        // Validate credentials
-        if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
-            JOptionPane.showMessageDialog(null, "Login Successful!");
-            showMenu();
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid Username or Password!");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vakasha - Explore Swazi Tourism</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
         }
-    }
-
-    private void showMenu() {
-        while (true) {
-            // Display menu options
-            String menu = "1) Add User\n2) Delete User\n3) Display Users\n4) Exit";
-            String choice = JOptionPane.showInputDialog(menu);
-
-            switch (choice) {
-                case "1":
-                    addUser();
-                    break;
-                case "2":
-                    deleteUser();
-                    break;
-                case "3":
-                    displayUsers();
-                    break;
-                case "4":
-                    JOptionPane.showMessageDialog(null, "Exiting...");
-                    System.exit(0);
-                default:
-                    JOptionPane.showMessageDialog(null, "Invalid Choice! Try again.");
-            }
+        header {
+            background-color: #4267B2;
+            padding: 10px;
+            color: white;
+            text-align: center;
         }
-    }
-
-    private void addUser() {
-        String newUser = JOptionPane.showInputDialog("Enter username to add:");
-        if (newUser != null && !newUser.isEmpty()) {
-            users.add(newUser);
-            JOptionPane.showMessageDialog(null, "User added successfully!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid input! User not added.");
+        header h1 {
+            margin: 0;
         }
-    }
-
-    private void deleteUser() {
-        String userToDelete = JOptionPane.showInputDialog("Enter username to delete:");
-        if (users.contains(userToDelete)) {
-            users.remove(userToDelete);
-            JOptionPane.showMessageDialog(null, "User deleted successfully!");
-        } else {
-            JOptionPane.showMessageDialog(null, "User not found!");
+        nav {
+            background-color: #3b5998;
+            padding: 10px;
+            text-align: center;
         }
-    }
-
-    private void displayUsers() {
-        if (users.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No users to display.");
-        } else {
-            StringBuilder userList = new StringBuilder("Users:\n");
-            for (String user : users) {
-                userList.append(user).append("\n");
-            }
-            JOptionPane.showMessageDialog(null, userList.toString());
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 18px;
         }
-    }
+        nav a:hover {
+            background-color: #4c69ba;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .post {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+        .post h3 {
+            margin-top: 0;
+        }
+        .footer {
+            background-color: #4267B2;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
 
-    public static void main(String[] args) {
-        // Create an instance of the AdminSystem class
-        AdminSystem adminSystem = new AdminSystem();
-        adminSystem.Admin(); // Call the Admin method
-    }
-}
+    <!-- Header -->
+    <header>
+        <h1>Vakasha</h1>
+        <p>Promoting Local Tourism in Swaziland</p>
+    </header>
 
-      
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#places">Places & Spaces</a>
+        <a href="#getaways">Getaways</a>
+        <a href="#eateries">Eateries</a>
+        <a href="#adventures">Adventures</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section-title">Welcome to Vakasha</div>
+        <p>Vakasha is your gateway to exploring Swaziland through personal travel experiences, showcasing hidden gems, getaways, and adventures. Discover scenic spots, fun activities, eateries, and everything in between!</p>
+
+        <!-- Example of Posts -->
+        <div class="section-title">Latest Travel Experiences</div>
+        
+        <div class="post">
+            <h3>Exploring the Scenic Ezulwini Valley</h3>
+            <p><strong>Date:</strong> August 20, 2024</p>
+            <p>Ezulwini Valley is known for its breathtaking views and serene environment. Whether you’re hiking, visiting cultural sites, or just relaxing in nature, this place has something for everyone!</p>
+        </div>
+
+        <div class="post">
+            <h3>A Weekend Getaway at Maguga Dam</h3>
+            <p><strong>Date:</strong> September 5, 2024</p>
+            <p>Maguga Dam is perfect for a peaceful retreat with stunning lake views, picnic spots, and nearby lodges. Don't miss out on the water sports!</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Vakasha - All Rights Reserved | Contact: info@vakasha.com</p>
+    </div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventures in Swaziland</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e8f4f8;
+        }
+        header {
+            background-color: #2E8B57;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #3a6b53;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            background-color: #4b8c6a;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 28px;
+            color: #2E8B57;
+            margin-bottom: 20px;
+        }
+        .adventure {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .adventure h3 {
+            margin-top: 0;
+        }
+        .adventure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #2E8B57;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Adventures in Swaziland</h1>
+        <p>Discover thrilling experiences in the Kingdom of Eswatini</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#hiking">Hiking</a>
+        <a href="#rafting">Rafting</a>
+        <a href="#zipline">Zip Lining</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section-title">Explore Outdoor Adventures</div>
+        
+        <!-- Adventure 1 -->
+        <div class="adventure" id="hiking">
+            <h3>Mountain Hiking in Malolotja Nature Reserve</h3>
+            <img src="https://example.com/malolotja-hiking.jpg" alt="Malolotja Nature Reserve">
+            <p>Malolotja Nature Reserve offers some of the best hiking experiences in Swaziland. With beautiful landscapes, waterfalls, and rich biodiversity, it's a perfect spot for adventurers who love the outdoors.</p>
+        </div>
+
+        <!-- Adventure 2 -->
+        <div class="adventure" id="rafting">
+            <h3>White Water Rafting at Usutu River</h3>
+            <img src="https://example.com/usutu-rafting.jpg" alt="Usutu River Rafting">
+            <p>For adrenaline seekers, white water rafting on the Usutu River is an exhilarating experience. Navigate through the rapids while enjoying the stunning scenery along the riverbanks.</p>
+        </div>
+
+        <!-- Adventure 3 -->
+        <div class="adventure" id="zipline">
+            <h3>Zip Lining at Malolotja Canopy Tour</h3>
+            <img src="https://example.com/ziplining-malolotja.jpg" alt="Zip Lining at Malolotja">
+            <p>Experience the thrill of zip-lining through the lush forests of Malolotja. The canopy tour offers breathtaking views and a heart-pounding adventure as you soar high above the treetops.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Adventures in Swaziland | All Rights Reserved | Contact: adventure@swaziland.com</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eateries in Swaziland</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #e63946;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #f77f00;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            background-color: #d62828;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 28px;
+            color: #e63946;
+            margin-bottom: 20px;
+        }
+        .eatery {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .eatery h3 {
+            margin-top: 0;
+        }
+        .eatery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #e63946;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Eateries in Swaziland</h1>
+        <p>Discover the best dining experiences in the Kingdom of Eswatini</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#restaurants">Restaurants</a>
+        <a href="#local-cuisine">Local Cuisine</a>
+        <a href="#cafes">Cafes & Bistros</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section-title">Explore the Best Eateries</div>
+
+        <!-- Eatery 1 -->
+        <div class="eatery" id="restaurants">
+            <h3>The Calabash Restaurant</h3>
+            <img src="https://example.com/calabash.jpg" alt="The Calabash Restaurant">
+            <p>The Calabash is known for its luxurious atmosphere and delightful menu offering a blend of Swazi and international dishes. It’s a perfect spot for a fine dining experience in Mbabane.</p>
+        </div>
+
+        <!-- Eatery 2 -->
+        <div class="eatery" id="local-cuisine">
+            <h3>Traditional Swazi Kitchen</h3>
+            <img src="https://example.com/traditional-swazi-kitchen.jpg" alt="Traditional Swazi Kitchen">
+            <p>For those looking to immerse themselves in authentic Swazi cuisine, the Traditional Swazi Kitchen offers a cultural culinary experience. Don’t miss their famous Umncweba (dried meat) and Emasi (fermented milk).</p>
+        </div>
+
+        <!-- Eatery 3 -->
+        <div class="eatery" id="cafes">
+            <h3>Yebo Art Gallery Café</h3>
+            <img src="https://example.com/yebo-cafe.jpg" alt="Yebo Art Gallery Café">
+            <p>This trendy café located in Lobamba is perfect for art lovers and coffee enthusiasts alike. Enjoy a wide selection of fresh coffee, light snacks, and pastries, all while surrounded by beautiful local art.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Eateries in Swaziland | All Rights Reserved | Contact: info@swazieats.com</p>
+    </footer>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getaways in Swaziland</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #556B2F;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #6B8E23;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            background-color: #808000;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 28px;
+            color: #556B2F;
+            margin-bottom: 20px;
+        }
+        .getaway {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .getaway h3 {
+            margin-top: 0;
+        }
+        .getaway img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #556B2F;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Getaways in Swaziland</h1>
+        <p>Discover the perfect retreat spots in the Kingdom of Eswatini</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#lodges">Lodges</a>
+        <a href="#resorts">Resorts</a>
+        <a href="#nature-retreats">Nature Retreats</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section-title">Top Getaway Destinations</div>
+
+        <!-- Getaway 1 -->
+        <div class="getaway" id="lodges">
+            <h3>Foresters Arms Lodge</h3>
+            <img src="https://example.com/foresters-arms.jpg" alt="Foresters Arms Lodge">
+            <p>Foresters Arms Lodge is nestled in a forested region, offering a peaceful getaway surrounded by nature. Guests can enjoy comfortable accommodation, hiking trails, and spectacular views of the countryside.</p>
+        </div>
+
+        <!-- Getaway 2 -->
+        <div class="getaway" id="resorts">
+            <h3>Summerfield Luxury Resort & Botanical Garden</h3>
+            <img src="https://example.com/summerfield.jpg" alt="Summerfield Luxury Resort">
+            <p>Summerfield Luxury Resort is a premier retreat offering luxurious accommodation, a botanical garden, and world-class dining. It's the perfect place to unwind and indulge in nature's beauty.</p>
+        </div>
+
+        <!-- Getaway 3 -->
+        <div class="getaway" id="nature-retreats">
+            <h3>Phophonyane Falls Eco Lodge</h3>
+            <img src="https://example.com/phophonyane-falls.jpg" alt="Phophonyane Falls Eco Lodge">
+            <p>Phophonyane Falls Eco Lodge is a serene nature retreat where guests can relax by the waterfalls, explore beautiful hiking trails, and stay in eco-friendly accommodations.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Getaways in Swaziland | All Rights Reserved | Contact: getaways@swaziland.com</p>
+    </footer>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places and Spaces in Swaziland</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #8B0000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #a52a2a;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            background-color: #b22222;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 28px;
+            color: #8B0000;
+            margin-bottom: 20px;
+        }
+        .place {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .place h3 {
+            margin-top: 0;
+        }
+        .place img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #8B0000;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Places and Spaces in Swaziland</h1>
+        <p>Explore the iconic landmarks and hidden gems of Eswatini</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#cultural">Cultural Spots</a>
+        <a href="#landmarks">Landmarks</a>
+        <a href="#scenic">Scenic Locations</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section-title">Top Places to Visit in Swaziland</div>
+
+        <!-- Place 1 -->
+        <div class="place" id="cultural">
+            <h3>King Sobhuza II Memorial Park</h3>
+            <img src="https://example.com/sobhuza-memorial.jpg" alt="King Sobhuza II Memorial Park">
+            <p>This cultural spot commemorates King Sobhuza II, who played a significant role in Swaziland's independence. The park is a peaceful place where visitors can learn about the history of Swaziland and its monarchy.</p>
+        </div>
+
+        <!-- Place 2 -->
+        <div class="place" id="landmarks">
+            <h3>Ngwenya Glass Factory</h3>
+            <img src="https://example.com/ngwenya-glass.jpg" alt="Ngwenya Glass Factory">
+            <p>Ngwenya Glass Factory is one of Swaziland's most famous landmarks. Visitors can watch skilled craftsmen create beautiful glass pieces and browse a selection of handmade items in the shop.</p>
+        </div>
+
+        <!-- Place 3 -->
+        <div class="place" id="scenic">
+            <h3>Execution Rock</h3>
+            <img src="https://example.com/execution-rock.jpg" alt="Execution Rock">
+            <p>Execution Rock is a dramatic and scenic location known for its breathtaking views of the surrounding landscape. It offers a challenging hike and is steeped in local legend, making it a must-visit for adventurous travelers.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Places and Spaces in Swaziland | All Rights Reserved | Contact: places@swaziland.com</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Vakasha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #008080;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .contact-title {
+            font-size: 28px;
+            color: #008080;
+            margin-bottom: 20px;
+        }
+        .contact-info, .contact-form {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-info h3, .contact-form h3 {
+            margin-top: 0;
+        }
+        .contact-form label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+        .contact-
